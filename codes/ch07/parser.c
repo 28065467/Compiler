@@ -334,6 +334,11 @@
         Error(13);
         skip(statement, 23);
       }
+      if(strcmp(token->value, "ELSE") == 0)
+      {
+        token = nextToken();
+        Statement();
+      }
     }
     else
     {
@@ -490,7 +495,9 @@
   {
     Factor();
     while (token->sym == symMUL ||
-           token->sym == symDIV)
+           token->sym == symDIV ||
+           strcmp(token->value, "DIV") == 0||
+           strcmp(token->value, "MOD") == 0)
     {
       token = nextToken();
       Factor();

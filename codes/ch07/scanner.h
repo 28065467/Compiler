@@ -51,6 +51,13 @@ struct symbolTag *nextToken()
                nextChar >= 'A' && nextChar <= 'Z' ||
                nextChar>='0' && nextChar<='9');
       s[n]='\0';
+      if(strcmp(s , "ELSE") == 0)
+        return newSymbol(symELSE,linenum,cp,s);
+      if(strcmp(s , "MOD") == 0)
+        return newSymbol(symMOD,linenum,cp,s);
+      if(strcmp(s , "DIV") == 0)
+        return newSymbol(symDIV,linenum,cp,s);
+      
       return newSymbol(symIDENTIFIER,linenum,cp,s);
     }
     else if (nextChar>='0' && nextChar<='9')

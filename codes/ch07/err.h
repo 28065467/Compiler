@@ -15,7 +15,7 @@ char errmsgs[ERRMAX][36]=
   "¿òº|BEGIN",                  /*errmsgs[10]*/
   "¿òº|END",                    /*errmsgs[11]*/
   "¿òº|IF",                     /*errmsgs[12]*/
-  "¿òº|THEN",                   /*errmsgs[12]*/
+  "¿òº|THEN",                   /*errmsgs[13]*/
   "¿òº|WHILE",                  /*errmsgs[14]*/
   "WHILE±Ô­z¿ù»~,¿òº|DO",       /*errmsgs[15]*/
   "¿òº|READ",                   /*errmsgs[16]*/

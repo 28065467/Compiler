@@ -6,7 +6,7 @@ struct symbolTag
   int sym;
   int left;
   int right;
-  char value[36];
+  char value[38];
 } symbol;
 struct symbolTag *newSymbol(int sym, int left,
                             int right, char *value)

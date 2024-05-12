@@ -1,10 +1,10 @@
 /********************** resword.h ******************/
 #include <stdlib.h>
-#define RESWORDMAX 13
+#define RESWORDMAX 15
 char reswords[RESWORDMAX][10] =
   {
   "BEGIN","CALL","CONST","DO","END","IF","PROCEDURE",
-  "PROGRAM","READ","THEN","VAR","WHILE","WRITE"
+  "PROGRAM","READ","THEN","VAR","WHILE","WRITE" , "MOD" , "ELSE"
   };
 int isResword(char *s)
 {

@@ -15,8 +15,14 @@ void followsyminit()
   factor[symMINUS] = 1;
   factor[symMUL] = 1;
   factor[symDIV] = 1;
+
+  factor[symMOD] = 1;
+  
   factor[symEND] = 1;
   factor[symTHEN] = 1;
+
+  factor[symELSE] = 1;
+
   factor[symDO] = 1;
   term[symPERIOD] = 1;
   term[symSEMI] = 1;
@@ -25,6 +31,9 @@ void followsyminit()
   term[symMINUS] = 1;
   term[symEND] = 1;
   term[symTHEN] = 1;
+
+  term[symELSE] = 1;
+
   term[symDO] = 1;
   expression[symPERIOD] = 1;
   expression[symSEMI] = 1;
@@ -33,6 +42,9 @@ void followsyminit()
   expression[symTHEN] = 1;
   expression[symDO] = 1;
   condition[symTHEN] = 1;
+
+  condition[symELSE] = 1;
+
   condition[symDO] = 1;
   statement[symPERIOD] = 1;
   statement[symSEMI] = 1;

@@ -1,5 +1,5 @@
 //************ sym.h **************
-#define symSYMMAX         35
+#define symSYMMAX         37
 #define symEOF             0
 #define symerror           1
 #define symIDENTIFIER      2
@@ -35,3 +35,6 @@
 #define symPROCEDURE      32
 #define symPROGRAM        33
 #define symSTRING         34
+/*Added*/
+#define symELSE           35
+#define symMOD            36

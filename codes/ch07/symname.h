@@ -39,4 +39,6 @@ void symnameinit()
   strcpy(names[symPROCEDURE],"PROCEDURE");
   strcpy(names[symPROGRAM],"PROGRAM");
   strcpy(names[symSTRING],"STRING");
+  strcpy(names[symELSE], "ELSE");
+  strcpy(names[symMOD], "MOD");
 }
