@@ -1,0 +1,18 @@
+請逐次輸入字串插入樹結構，Ctrl-Z結束
+IF <Enter>
+THEN <Enter>
+ELSE <Enter>
+CALL <Enter>
+READ <Enter>
+WRITE <Enter>
+^Z <Enter>
+
+        樹根root=0x003D2430 中序(in order)取出
+
+  指標          左鏈            右鏈            識別字
+0x003D24D8      0x00000000      0x00000000      "CALL"
+0x003D2468      0x003D24D8      0x00000000      "ELSE"
+0x003D2430      0x003D2468      0x003D24A0      "IF"
+0x003D2510      0x00000000      0x00000000      "READ"
+0x003D24A0      0x003D2510      0x003D2548      "THEN"
+0x003D2548      0x00000000      0x00000000      "WRITE"

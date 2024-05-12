@@ -1,0 +1,12 @@
+
+C:\plone\ch14>bison rpncalc.y 
+
+C:\plone\ch14>gcc rpncalc.tab.c -o rpncalc.exe 
+
+C:\plone\ch14>rpncalc.exe  0<rpncalc.txt 
+12 13 +
+33 44 + 5 6 7 *+-
+    輸入資料檔"rpncalc.txt"內容如下：
+    透過bison的yyparse()逐一剖析結果如下：
+	25
+	30

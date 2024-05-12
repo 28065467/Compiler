@@ -1,0 +1,20 @@
+   1 PROGRAM test52; 
+   2 CONST 
+   3   msg1=" x=", 
+   4   msg2=" y="; 
+   5 VAR 
+   6   x, y; 
+   7 BEGIN 
+   8   x := 3; 
+   9   WHILE x!=0 DO 
+***錯誤***	符記編號=1	列號=9	行號=10	符記名稱="!"
+  10     BEGIN 
+  11       y := x^3+6; 
+***錯誤***	符記編號=1	列號=11	行號=13	符記名稱="^"
+  12       WRITE(msg1,x); 
+  13       WRITE(msg2,y); 
+  14       x := x-1; 
+  15     END; 
+  16 END. 
+
+  語彙分析完成。

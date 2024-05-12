@@ -1,0 +1,11 @@
+
+C:\plone\rpncalc>bison -r itemset -d calr.y 
+C:\plone\rpncalc>flex calc.l
+C:\plone\rpncalc>gcc lex.yy.c calr.tab.c -o calr.exe
+C:\plone\rpncalc>calr calr.txt
+    輸入資料檔"calr.txt"內容如下：
+4 9 5 -+
+1.2 .3 +
+    透過bison的yyparse()逐一剖析結果如下：
+	       8
+       	1.5

@@ -1,0 +1,19 @@
+
+C:\plone\symcalc>bison -d calc.y 
+C:\plone\symcalc>flex calc.l
+C:\plone\symcalc>gcc lex.yy.c calc.tab.c -o calc.exe
+C:\plone\symcalc>calc.exe calc.txt
+    輸入資料檔"calc.txt"內容如下：
+a=1
+b=2
+c=-3
+d=b*b-4*a*c
+x1=(-b+4)/2
+x2=(-b-4)/2
+    透過bison的yyparse()逐一剖析結果如下：
+	       1
+       	2
+       	-3
+       	16
+       	1
+       	-3

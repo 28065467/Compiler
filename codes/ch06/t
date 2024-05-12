@@ -1,0 +1,22 @@
+   1 PROGRAM test62; 
+   2 CONST 
+   3   msg1=" x=", 
+   4   msg2=" y="; 
+   5 VAR 
+   6   x, y; 
+   7 BEGIN 
+   8   x := 3; 
+   9   WHILE x!=0 DO 
+****          ^20  Ãö«Y¹Bºâ¤l¿ù»~
+     sym=1 left=9 right=10 value="!"
+****          ^17  ¿òº|(
+     sym=1 left=9 right=10 value="!"
+****          ^15  WHILE±Ô­z¿ù»~,¿òº|DO
+     sym=1 left=9 right=10 value="!"
+****          ^11  ¿òº|END
+     sym=1 left=9 right=10 value="!"
+****          ^0  ¥²¶·¸òµÛ¥yÂI.
+     sym=1 left=9 right=10 value="!"
+
+  Plone compile completed. 
+  Error count : 5

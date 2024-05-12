@@ -1,0 +1,44 @@
+   1 PROGRAM test74; 
+   2 CONST 
+   3   msg1=" x=", 
+   4   msg2=" y=", 
+   5   msg3=" HCF="; 
+   6 VAR 
+   7   x, y; 
+   8   PROCEDURE gcd; 
+   9   VAR r; 
+  10     PROCEDURE ; 
+****               ^21  ¿òº|ÃÑ§O¦r
+  11     VAR r; 
+  12     BEGIN 
+  13       r  = x; 
+****          ^8  ¿òº|:=
+****          ^23  ­¸¶V¦Ü¤U¤@­Ó±Ô­z
+  14       WHILE x>y DO x := x-y; 
+  15     END; 
+  16     PROCEDURE yDIVx; 
+  17     VAR r; 
+  18     BEGIN 
+  19       r :=  y; 
+  20       WHILE y>x DO; y:=y-x; 
+  21     END; 
+  22   BEGIN 
+  23     WHILE x<>y DO 
+  24       BEGIN 
+  25         IF x>y THEN CALL xDIVy; 
+  26         IF y>x THEN CALL      ; 
+****                               ^21  ¿òº|ÃÑ§O¦r
+  27       END; 
+  28     WRITE(msg3,x); 
+  29   END; 
+  30 BEGIN 
+  31   x := 12; 
+  32   y := 9; 
+  33   WRITE(msg1,); 
+****              ^21  ¿òº|ÃÑ§O¦r
+  34   WRITE(msg2,y); 
+  35   CALL gcd; 
+  36 END. 
+
+  Plone compile completed. 
+  Error count : 5

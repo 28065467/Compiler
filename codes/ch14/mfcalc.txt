@@ -1,0 +1,10 @@
+pi=3.1416
+s=sin(pi/6)
+m=1
+n=2
+a=3
+b=sqrt(a)
+c=exp(m)
+d=ln(n)
+e=exp(1)
+

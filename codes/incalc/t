@@ -1,0 +1,13 @@
+
+C:\plone\incalc>bison -d calc.y 
+C:\plone\incalc>flex calc.l
+C:\plone\incalc>gcc lex.yy.c calc.tab.c -o calc.exe
+C:\plone\incalc>calc.exe < calc.txt
+    輸入資料檔"calc.txt"內容如下：
+4 + 4.5 - (34/(8*3+-3))
+-56 + 2
+3 ^ 2
+    透過bison的yyparse()逐一剖析結果如下：
+	       6.880952381
+       	-54
+       	9

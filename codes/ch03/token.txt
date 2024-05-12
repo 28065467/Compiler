@@ -1,0 +1,1 @@
+strtok() helps to divide a string into a set of tokens.

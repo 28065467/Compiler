@@ -1,0 +1,25 @@
+
+C:\plone\mfcalc>bison -d calc.y 
+C:\plone\mfcalc>flex calc.l
+C:\plone\mfcalc>gcc lex.yy.c calc.tab.c -o calc.exe
+C:\plone\mfcalc>calc.exe calc.txt
+    輸入資料檔"calc.txt"內容如下：
+pi = 3.1416
+sin(pi/6)
+m=1
+n=2
+a=3
+sqrt(a)
+exp(m)
+ln(n)
+exp(1)
+    透過bison的yyparse()逐一剖析結果如下：
+       	3.1416
+       	0.5000010604
+       	1
+       	2
+       	3
+       	1.732050808
+       	2.718281828
+      	 0.6931471806
+      	 2.718281828

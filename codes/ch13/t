@@ -1,0 +1,16 @@
+pi = 3.14
+alpha = pi*2/6
+beta = (alpha+30/180)*3-1
+angle=alpha+beta
+    輸入規格檔"symcalc.txt"內容如下：
+	識別字長度	識別字名稱
+	  2		"pi"
+	  5		"alpha"
+	  2		"pi"
+	  4		"beta"
+	  5		"alpha"
+	  5		"angle"
+	  5		"alpha"
+	  4		"beta"
+
+	總共列數=4	識別字數=8

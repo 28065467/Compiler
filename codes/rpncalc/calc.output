@@ -1,0 +1,209 @@
+Grammar
+
+    0 $accept: input $end
+
+    1 input: input line
+    2      | /* empty */
+
+    3 line: '\n'
+    4     | expr '\n'
+
+    5 expr: NUM
+    6     | expr expr '+'
+    7     | expr expr '-'
+    8     | expr expr '*'
+    9     | expr expr '/'
+   10     | expr expr '^'
+   11     | expr 'n'
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'\n' (10) 3 4
+'*' (42) 8
+'+' (43) 6
+'-' (45) 7
+'/' (47) 9
+'^' (94) 10
+'n' (110) 11
+error (256)
+NUM (258) 5
+
+
+Nonterminals, with rules where they appear
+
+$accept (11)
+    on left: 0
+input (12)
+    on left: 1 2, on right: 0 1
+line (13)
+    on left: 3 4, on right: 1
+expr (14)
+    on left: 5 6 7 8 9 10 11, on right: 4 6 7 8 9 10 11
+
+
+state 0
+
+    0 $accept: . input $end
+    1 input: . input line
+    2      | .
+
+    $default  reduce using rule 2 (input)
+
+    input  go to state 1
+
+
+state 1
+
+    0 $accept: input . $end
+    1 input: input . line
+    3 line: . '\n'
+    4     | . expr '\n'
+    5 expr: . NUM
+    6     | . expr expr '+'
+    7     | . expr expr '-'
+    8     | . expr expr '*'
+    9     | . expr expr '/'
+   10     | . expr expr '^'
+   11     | . expr 'n'
+
+    $end  shift, and go to state 2
+    NUM   shift, and go to state 3
+    '\n'  shift, and go to state 4
+
+    line  go to state 5
+    expr  go to state 6
+
+
+state 2
+
+    0 $accept: input $end .
+
+    $default  accept
+
+
+state 3
+
+    5 expr: NUM .
+
+    $default  reduce using rule 5 (expr)
+
+
+state 4
+
+    3 line: '\n' .
+
+    $default  reduce using rule 3 (line)
+
+
+state 5
+
+    1 input: input line .
+
+    $default  reduce using rule 1 (input)
+
+
+state 6
+
+    4 line: expr . '\n'
+    5 expr: . NUM
+    6     | . expr expr '+'
+    6     | expr . expr '+'
+    7     | . expr expr '-'
+    7     | expr . expr '-'
+    8     | . expr expr '*'
+    8     | expr . expr '*'
+    9     | . expr expr '/'
+    9     | expr . expr '/'
+   10     | . expr expr '^'
+   10     | expr . expr '^'
+   11     | . expr 'n'
+   11     | expr . 'n'
+
+    NUM   shift, and go to state 3
+    '\n'  shift, and go to state 7
+    'n'   shift, and go to state 8
+
+    expr  go to state 9
+
+
+state 7
+
+    4 line: expr '\n' .
+
+    $default  reduce using rule 4 (line)
+
+
+state 8
+
+   11 expr: expr 'n' .
+
+    $default  reduce using rule 11 (expr)
+
+
+state 9
+
+    5 expr: . NUM
+    6     | . expr expr '+'
+    6     | expr . expr '+'
+    6     | expr expr . '+'
+    7     | . expr expr '-'
+    7     | expr . expr '-'
+    7     | expr expr . '-'
+    8     | . expr expr '*'
+    8     | expr . expr '*'
+    8     | expr expr . '*'
+    9     | . expr expr '/'
+    9     | expr . expr '/'
+    9     | expr expr . '/'
+   10     | . expr expr '^'
+   10     | expr . expr '^'
+   10     | expr expr . '^'
+   11     | . expr 'n'
+   11     | expr . 'n'
+
+    NUM  shift, and go to state 3
+    '+'  shift, and go to state 10
+    '-'  shift, and go to state 11
+    '*'  shift, and go to state 12
+    '/'  shift, and go to state 13
+    '^'  shift, and go to state 14
+    'n'  shift, and go to state 8
+
+    expr  go to state 9
+
+
+state 10
+
+    6 expr: expr expr '+' .
+
+    $default  reduce using rule 6 (expr)
+
+
+state 11
+
+    7 expr: expr expr '-' .
+
+    $default  reduce using rule 7 (expr)
+
+
+state 12
+
+    8 expr: expr expr '*' .
+
+    $default  reduce using rule 8 (expr)
+
+
+state 13
+
+    9 expr: expr expr '/' .
+
+    $default  reduce using rule 9 (expr)
+
+
+state 14
+
+   10 expr: expr expr '^' .
+
+    $default  reduce using rule 10 (expr)

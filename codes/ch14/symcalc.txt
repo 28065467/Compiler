@@ -1,0 +1,7 @@
+pi = 3.14
+pi
+alpha = pi*2/6
+alpha
+beta = (alpha+30/180)*3-1
+angle=alpha+beta
+

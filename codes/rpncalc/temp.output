@@ -1,0 +1,90 @@
+Grammar                             [註]文法
+    0 $accept: input $end           [註]第0條文法規則
+    1 input: input line
+    2      | /* empty */
+    3 line: '\n'
+    4     | expr '\n'
+    5 expr: NUM
+    6     | expr expr '+'
+    7     | expr expr '-'
+
+Terminals, with rules where they appear [註]符記及規則
+$end  (0)   0
+'\n'  (10)  3 4 [註]'\n'的ASCII碼為10,出現在#3、#4規則
+'+'   (43)  6   [註]'+'的ASCII碼為43,出現在#6規則
+'-'   (45)  7   [註]'-'的ASCII碼為45,出現在#7規則
+error (256)
+NUM   (258) 5   [註]NUM符記編號258,出現在#5規則
+
+Nonterminals, with rules where they appear
+$accept (7)
+    on left: 0
+input (8)                       [註]input(#8規則)
+    on left: 1 2, on right: 0 1 [註]出現在左右手邊規則
+line (9)
+    on left: 3 4, on right: 1
+expr (10)
+    on left: 5 6 7, on right: 4 6 7
+
+state 0                                   [註]狀態0
+    0 $accept: . input $end [註]小數點右方為輸入資料流
+    1 input: . input line   [註]小數點左方為堆疊
+    2      | .
+    $default  reduce using rule 2 (input) [註]用#2簡化
+    input  go to state 1          [註]若input跳至狀態1
+state 1                                   [註]狀態1
+    0 $accept: input . $end
+    1 input: input . line
+    3 line: . '\n'
+    4     | . expr '\n'
+    5 expr: . NUM
+    6     | . expr expr '+'
+    7     | . expr expr '-'
+    $end  shift, and go to state 2 [註]若$end跳至狀態2
+    NUM   shift, and go to state 3 [註]若NUM跳至狀態3
+    '\n'  shift, and go to state 4 [註]若'\n'跳至狀態4
+    line  go to state 5            [註]若line跳至狀態5
+    expr  go to state 6            [註]若expr跳至狀態6
+state 2                                   [註]狀態2
+    0 $accept: input $end .
+    $default  accept
+state 3                                   [註]狀態3
+    5 expr: NUM .
+    $default  reduce using rule 5 (expr)
+state 4                                   [註]狀態4
+    3 line: '\n' .
+    $default  reduce using rule 3 (line)
+state 5                                   [註]狀態5
+    1 input: input line .
+    $default  reduce using rule 1 (input)
+state 6                                   [註]狀態6
+    4 line: expr . '\n'
+    5 expr: . NUM
+    6     | . expr expr '+'
+    6     | expr . expr '+'
+    7     | . expr expr '-'
+    7     | expr . expr '-'
+    NUM   shift, and go to state 3
+    '\n'  shift, and go to state 7
+    expr  go to state 8
+state 7                                   [註]狀態7
+    4 line: expr '\n' .
+    $default  reduce using rule 4 (line)
+state 8                                   [註]狀態8
+    5 expr: . NUM
+    6     | . expr expr '+'
+    6     | expr . expr '+'
+    6     | expr expr . '+'
+    7     | . expr expr '-'
+    7     | expr . expr '-'
+    7     | expr expr . '-'
+    NUM  shift, and go to state 3
+    '+'  shift, and go to state 9
+    '-'  shift, and go to state 10
+    expr  go to state 8
+state 9                                   [註]狀態9
+    6 expr: expr expr '+' .
+    $default  reduce using rule 6 (expr)
+state 10                                  [註]狀態10
+    7 expr: expr expr '-' .
+    $default  reduce using rule 7 (expr)
